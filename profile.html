@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Information -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Gondot okoz az ajándékozás? Nálunk az egész család egy helyen nyomonkövetheti mindeni ajándékát! Nem kell többé gondolkozni, hogy ki milyen ajándékot kért.">
+        <meta name="author" content="Attila Pallagi">
+        <meta name="keywords" content="karácsony, ajándék, meglepetés, adatbázis, család, segítség, egyszerűség">
+        <title>Kari - Profil</title>
+    <!-- Linked resources -->
+        <link rel="stylesheet" href="profile.css">
+        <link rel="icon" type="image/png" href="images/favicon.png">
+        <script defer src="app.js"></script>
+        <script defer src="profile.js"></script>
+        
+
+        <!-- Firebase -->
+        <script  src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script  src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+        <script  src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script  src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class="section section-one">
+        <!-- Header ------------------------------------------->
+        <header>
+            <!-- Icon -->
+            <a class="logo" href="index.html"><img src="images/Kari - logó-02.svg" title="Főoldal" alt="Weboldal ikonja"></a>
+            <!-- Dropdown -->
+            <div id="hamburgeButton" class="dropdown-hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+
+            <!-- Navigation -->
+
+            <!-- Navbar -->
+            <nav>
+                <ul>
+                    <li><a class="nav-button nav-button-simple logged-in" href="faq.html"><button>Hasznos információk</button></a></li>
+                    <li><a class="nav-button nav-button-simple logged-in" href="familypage.html"><button>Családi főmenü</button></a></li>
+                    <li><button class="nav-button nav-button-simple logged-in authLogoutButton logout-button">Kijelentkezés</button></li>
+                    <li><a id="profileButton" class="nav-button logged-in" href="profile.html"><button>Profilom</button></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Dropdown -->
+        <nav id="dropdownList" class="dropdown-container display-none">
+            <ul>
+                <li><a class="logged-in dropdown-nav-button" href="faq.html">Hasznos információk</a></li>
+                <li><a class="logged-in dropdown-nav-button" href="familypage.html">Családi főmenü</a></li>
+                <li><a class="logged-in dropdown-nav-button" href="profile.html">Profilom</a></li>
+                <li><a class="logged-in authLogoutButton dropdown-nav-button" href="#">Kijelentkezés</a></li>
+            </ul>
+        </nav>
+
+
+
+        <h1 id="profileTitle">Szia! Ez a te profilod:</h1>
+        <section class="card">
+            <div class="grid-container">
+                <div class="grid-item grid-title">
+                    <h3>E-mail címed</h3>
+                </div>
+                    
+                <div class="grid-item grid-data">
+                    <p id="userEmail">E-mail</p>
+                </div>
+
+                <div class="grid-item grid-title">
+                    <h3>Felhasználó neved</h3>
+                </div>
+
+                <div class="grid-item grid-data">
+                    <p id="userDisplayName">Még nem állítottál be felhasználónevet</p>
+                </div>
+
+                <div class="grid-item grid-title">
+                    <h3>Fiók létrehozva</h3>
+                </div>
+
+                <div class="grid-item grid-data">
+                    <p id="userRegisteredTime" >Dátum</p>
+                </div>
+
+                <div class="grid-item grid-title">
+                    <h3>Utolsó bejelentkezés</h3>
+                </div>
+
+                <div class="grid-item grid-data">
+                    <p id="userLastSignIn" >Dátum</p>
+                </div>
+
+                <div class="grid-item">
+                    <button id="deleteAccButton" class="delete-account-button" >Fiók törlése</button>
+                </div>
+            </div>
+        </section>
+
+    <footer>
+        <p>All right reserved 	&copy;</p>
+    </footer>
+    </div>
+    <!-- <div class="section section-two"></div> -->
+    <div id="modalOverlay" class="modal-overlay display-none"></div>
+    <div id="dropdownOverlay" class="dropdown-overlay"></div>
+
+</body>
+</html>

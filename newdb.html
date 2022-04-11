@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Information -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Gondot okoz az ajándékozás? Nálunk az egész család egy helyen nyomonkövetheti mindeni ajándékát! Nem kell többé gondolkozni, hogy ki milyen ajándékot kért.">
+        <meta name="author" content="Attila Pallagi">
+        <meta name="keywords" content="karácsony, ajándék, meglepetés, adatbázis, család, segítség, egyszerűség">
+        <title>Kari - Profil</title>
+    <!-- Linked resources -->
+        <link rel="stylesheet" href="newdb.css">
+        <link rel="icon" type="image/png" href="images/favicon.png">
+        <script defer src="app.js"></script>
+        <script defer src="newdb.js"></script>
+        
+
+        <!-- Firebase -->
+        <script  src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script  src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+        <script  src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script  src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class="section section-one">
+        <!-- Header ===============================================================-->
+        <header>
+            <!-- Icon -->
+            <a class="logo" href="index.html"><img src="images/Kari - logó-02.svg" title="Főoldal" alt="Weboldal ikonja"></a>
+            <!-- Dropdown -->
+            <div id="hamburgeButton" class="dropdown-hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+
+            <!-- Navigation -->
+
+            <!-- Navbar -->
+            <nav>
+                <ul>
+                    <li><a class="nav-button nav-button-simple logged-in" href="faq.html"><button>Hasznos információk</button></a></li>
+                    <li><a class="nav-button nav-button-simple logged-in" href="familypage.html"><button>Családi főmenü</button></a></li>
+                    <li><button class="nav-button nav-button-simple logged-in authLogoutButton logout-button">Kijelentkezés</button></li>
+                    <li><a id="profileButton" class="nav-button logged-in" href="profile.html"><button>Profilom</button></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Dropdown -->
+        <nav id="dropdownList" class="dropdown-container display-none">
+            <ul>
+                <li><a class="logged-in dropdown-nav-button" href="faq.html">Hasznos információk</a></li>
+                <li><a class="logged-in dropdown-nav-button" href="familypage.html">Családi főmenü</a></li>
+                <li><a class="logged-in dropdown-nav-button" href="profile.html">Profilom</a></li>
+                <li><a class="logged-in authLogoutButton dropdown-nav-button" href="#">Kijelentkezés</a></li>
+            </ul>
+        </nav>
+
+
+
+        <!-- Content ================================================================ -->
+        <section class="card">
+            <h2>Hozz létre egy új családi adatbázist pár egyszerű lépésben!</h2>
+            <nav class="new-db-nav">
+                <ul>
+                    <li class="new-db-menu-element element0 active-new-db-menu">név</li>
+                    <li class="new-db-menu-element element1">tagok</li>
+                    <li class="new-db-menu-element element2">leírás</li>
+                    <li class="new-db-menu-element element3">összeghatár</li>
+                    <li class="new-db-menu-element element4">Összegzés</li>
+                </ul>
+            </nav>
+            <form action="" id="newDbForm" class="new-db-form ">
+
+                <!-- 0. Database's name ----------------------------------->
+                <div class="input-container "> <!-- display-none -->
+                    <div class="input-box">
+                        <label for="newDbName" class="new-db-label newDbName">Mi legyen az új családi adatbázis neve?</label>  
+                        <input id="newDbNameInput" name="newDbName" class="new-db-input" placeholder="Például: Kovács-család" type="text" minlength="3" maxlength="20"> 
+                    </div>
+                    <div class="input-btn-box">
+                        <!-- <button id="previousNewDbBtn" class="previous-new-db-btn"><</button> -->
+                        <button id="newDBNextButtonName" type="button" class="next-new-db-btn newDbNextButton">Tovább</button>
+                    </div>
+                </div>
+
+                <!-- 1. Database's members ----------------------------------->
+                <div class="input-container display-none"> <!-- display-none -->
+                    <div class="input-box">
+                        <label for="newDbMembers" class="new-db-label">Kik legyenek benne az adatbázisban?</label>  
+                            <div class="input-box-little">
+                                <input id="newDbMembers" class="new-db-input" name="newDbMembers" placeholder="Add meg az email címüket egyesével" type="email">
+                                <button id="addNewmemberBtn" class="add-new-member-btn" type="button">Hozzáad</button>
+                            </div>
+                    </div>
+
+                    <!-- Added members ----->
+                    <div class="added-members-container display-none"> <!-- display-none -->
+                        <ul class="added-members-list">
+                            <li class="added-member-item">attilapallagi@gmail.com</li>
+                            <li class="added-member-item">bela@gmail.com</li>
+                            <li class="added-member-item">atllagi@gmail.com</li>
+                            <li class="added-member-item">attilapallagi@gmail.com</li>
+                            <li class="added-member-item">bela@gmail.com</li>
+                            <li class="added-member-item">atllagi@gmail.com</li>
+                        </ul>
+                    </div>
+
+                    <div class="add-member-info-container">
+                        <p class="add-member-info">Add meg annak az email címét, akit hozzá szeretnél adni
+                            az adatbázishoz. Ha már regisztrált az oldalra ezzel az email
+                            címmel, akkor automatikusan hozzáadjuk az adatbázishoz.
+                            Ha még nem regisztrált, akkor küldd el neki az alábbi linket. 
+                            A sikeres regisztrációt követően hozzáadásra kerül a most
+                            létrehozott adatbázishoz.</p>
+                    </div>
+                
+                    <div class="add-member-info-container add-member-invite-link-container">
+                        <p class="add-member-invite-link">A Karin gyorsabban megy az ajándékozás. Hozzáadtalak egy adatbázishoz, már csak regisztrálnod kell, amit itt megtehetsz:
+                            <br>https://your_subdomain.page.link/?link=your_deep_link&apn=package_name[&amv=minimum_version][&afl=fallback_link]
+                            </p>
+                        <button class="copy-link-btn" type="button">Másol</button>
+                    </div>
+
+                    <div class="input-btn-box">
+                        <button id="newDBPrevButtonMembers" class="previous-new-db-btn newDbPrevButton" type="button">Előző</button>
+                        <button id="newDBNextButtonMembers" class="next-new-db-btn newDbNextButton" type="button">Tovább</button>
+                    </div>
+                </div>
+                
+                <!-- 2. Database's discription ----------------------------------->
+                <div class="input-container display-none"> <!-- display-none -->
+                    <div class="input-box">
+                        <label for="newDbdisc" class="new-db-label newDbdisc">Adj leírást az adatbázishoz!</label>  
+                        <textarea id="newDbdisc" name="newDbdisc" class="new-db-input new-db-input-disc" placeholder="Maximum 140 karakter" contenteditable="true" type="text" rows="4" maxlength="140"></textarea>
+                    </div>
+                    <div class="input-btn-box">
+                        <button id="newDBPrevButtonDiscription" class="newDbPrevButton" type="button">Előző</button>
+                        <button id="newDBNextButtonDiscription" class="next-new-db-btn newDbNextButton" type="button">Tovább</button>
+                    </div>
+                </div>
+                <!-- 3. Database's spending limit ----------------------------------->
+                <div class="input-container display-none"> <!-- display-none -->
+                    <div class="input-box">
+                        <label for="newDbSpend" class="new-db-label">Ha beszéltetek meg összeghatárt, itt add meg!</label>  
+                            <div class="input-box-little">
+                                <input id="newDbSpend" class="new-db-input" name="newDbSpend" placeholder="Például: 5000 Ft" type="number">
+                                <button id="addNewmemberBtn" class="add-new-member-btn" type="button">Hozzáad</button>
+                            </div>
+
+                        <div class="input-btn-box">
+                            <button id="newDBPrevButtonSpend" class="previous-new-db-btn newDbPrevButton" type="button">Előző</button>
+                            <button id="newDBNextButtonSpending" class="next-new-db-btn newDbNextButton" type="button">Tovább</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 4. Database Summary ----------------------------------->
+                <div class="input-container display-none"> <!-- display-none -->
+                    <div class="summary-container">
+                        <div class="summary-item summary-name">Pallagi-Család</div>
+                            <div class="summary-item summary-members">
+                            <ul class="summary-members-list">
+                                <li class="added-member-item">attilapallagi@gmail.com</li>
+                                <li class="added-member-item">bela@gmail.com</li>
+                                <li class="added-member-item">atllagi@gmail.com</li>
+                                <li class="added-member-item">attilapallagi@gmail.com</li>
+                                <li class="added-member-item">bela@gmail.com</li>
+                                <li class="added-member-item">atllagi@gmail.com</li>
+                            </ul>
+                        </div>
+                        <div class="summary-item summary-discription">Ez a leírása az adatbázisnak! Ilyen rövid.</div>
+                        <div class="summary-item summary-spending">5000 Ft</div>
+                    </div>
+
+                    <div class="input-btn-box">
+                        <button id="newDBPrevButtonSummary" class="previous-new-db-btn newDbPrevButton" type="button">Előző</button>
+                        <button id="newDBSubmitButton" class="next-new-db-btn" type="submit">Létrehozom az új adatbázist</button>
+                    </div>
+                </div>
+
+
+            </form>
+        </section>
+
+    <footer>
+        <p>All right reserved 	&copy;</p>
+    </footer>
+    </div>
+    <!-- <div class="section section-two"></div> -->
+    <div id="modalOverlay" class="modal-overlay display-none"></div>
+    <div id="dropdownOverlay" class="dropdown-overlay"></div>
+
+</body>
+</html>

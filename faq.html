@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Information -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Gondot okoz az ajándékozás? Nálunk az egész család egy helyen nyomonkövetheti mindeni ajándékát! Nem kell többé gondolkozni, hogy ki milyen ajándékot kért.">
+        <meta name="author" content="Attila Pallagi">
+        <meta name="keywords" content="karácsony, ajándék, meglepetés, adatbázis, család, segítség, egyszerűség">
+        <title>Kari - Az ajándékozó adatbázis</title>
+    <!-- Linked resources -->
+        <link rel="stylesheet" href="faq.css">
+        <link rel="icon" type="image/png" href="images/favicon.png">
+        <script defer src="app.js"></script>
+        <script defer type="text/javascript" src="auth.js"></script>
+
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class="section section-one">
+        <!-- Header ------------------------------------------->
+        <header>
+            <!-- Icon -->
+            <a class="logo" href="index.html"><img src="images/Kari - logó-02.svg" title="Főoldal" alt="Weboldal ikonja"></a>
+            <!-- Dropdown -->
+            <div id="hamburgeButton" class="dropdown-hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+
+            <!-- Navigation -->
+
+            <!-- Navbar -->
+            <nav>
+                <ul>
+                    <li><button class="nav-button logged-out authLoginButton sign-in-button display-none">Belépés</button></li>
+                    <li><button class="nav-button logged-out authRegisterButton regiszter-button display-none">Regisztráció</button></li>
+                    <li><a class="nav-button nav-button-simple logged-in display-none" href="#"><button>Hasznos információk</button></a></li>
+                    <li><a class="nav-button nav-button-simple logged-in display-none" href="familypage.html"><button>Családi főmenü</button></a></li>
+                    <li><button class="nav-button nav-button-simple logged-in authLogoutButton logout-button display-none">Kijelentkezés</button></li>
+                    <li><a id="profileButton" class="nav-button logged-in display-none" href="profile.html"><button>Profilom</button></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Dropdown -->
+        <nav id="dropdownList" class="dropdown-container display-none">
+            <ul>
+                <li><a class="logged-out authLoginButton dropdown-nav-button" href="#">Belépés</a></li>
+                <li><a class="logged-out authRegisterButton dropdown-nav-button" href="#">Regisztráció</a></li>
+                <li><a class="logged-in dropdown-nav-button display-none" href="#">Hasznos információk</a></li>
+                <li><a class="logged-in dropdown-nav-button display-none" href="familypage.html">Családi főmenü</a></li>
+                <li><a class="logged-in dropdown-nav-button display-none" href="profile.html">Profilom</a></li>
+                <li><a class="logged-in authLogoutButton dropdown-nav-button display-none" href="#">Kijelentkezés</a></li>
+            </ul>
+        </nav>
+
+
+
+        <h1>Hasznos információk</h1>
+        <section class="card">
+            <h2 class="sub-title">Milyen problémára nyújtunk megoldást?</h2>
+            <p class="sub-text">Ha itt vagy, akkor valószínűleg az ajándékvásárlás neked sem tartozik a kedvenc elfoglaltságaid közé. Persze nem azért, mert nem szeretünk adni, inkább nem tudunk mit. Ilyenkor szoktuk megkérdezni a másikat, hogy mit szeretne kapni. Aztán, amikor vásárlásra kerül a sor, megpróbálunk visszaemlékezni vagy visszakeresni a beszélgetésben, hogy milyen színt, márkát, típust, méretet is kért is az illető? Majd végül rájövünk arra, hogy ezeket lehet, hogy nem is pontosította, így végül kénytelenek vagyunk ismét utánakérdezni.</p>
+            <h2 class="sub-title">Hogyan segítünk?</h2>
+            <p class="sub-text">A weboldalra regisztrált felhasználók (családtagok) családokba tartoznak. Ez egy privát adatbázis, amelynek fő alkotóelemei a listák. Minden családtaghoz tartozik egy ilyen lista, amelyben rögzítheti azokat az ajándékokat, amelyeket szívesen fogadna. Itt meg tudja adni, hogy milyen színt, méretet, típust stb. szeretne vagy akár konkrét oldalt is linkelhet, hogy megkönnyítse az ajándékozók dolgát. A többi családtag ezeket a listákat bármikor megnézheti és egy kattintással lefoglalhatja, hogy nehogy ketten is megvegyék ugyanazt az ajándékot.</p>
+            <img src="images/figure-about.svg" alt="Egyszerűsített ábra az oldal adatbázis felépítéséről">
+            <h2 class="sub-title">Hogyan működik?</h2>
+            <p class="sub-text">A családból valakinek létre kell hozni az közös családi adatbázist . Meg kell adni a családtagok e-mail címét, amivel már regisztráltak vagy regisztrálni fognak az oldalra. Ezeknek a családtagoknak lesz hozzáférése ehhez a családi adatbázishoz, ahol olvasási joguk van a többiek listájához és írási joguk a saját listájukhoz.</p>
+            <h2 class="sub-title">Több családi adatbázist is létre lehet hozni?</h2>
+            <p class="sub-text">Igen, tetszőleges számú családi adatbázis hozható létre, egy családtag pedig több ilyen adatbázishoz is tartozhat, de mindegyikben csak egy listája lehet. </p>
+        </section>
+
+    <footer>
+        <p>All right reserved 	&copy;</p>
+    </footer>
+    </div>
+    <!-- <div class="section section-two"></div> -->
+
+<!-- Login Modal --------------------------------------------------------------->
+<div id="loginModal" class="auth-modal modal-container auth-modal-login display-none">
+    <nav class="auth-modal-nav ">
+        <ul>
+            <li><button class="auth-button auth-button-login login-sign-in-button">Belépés</button></li>
+            <li><button class="auth-button auth-button-register login-register-button">Regisztráció</button></li>
+            <!-- <li><button class="auth-button login-close-button">&#10006</button></li> -->
+        </ul>
+    </nav>
+    <section class="auth-input-field">
+        <!-- Login Input ----------------------------------->
+        <h2 class="auth-modal-title loginTitle">Belépés</h2>
+        <form id="loginForm" action="" class="auth-form loginForm">
+            <div class="input-container input-container-first">
+                <label for="loginEmail" class="auth-label loginEmail">E-mail cím</label>
+                <input required id="loginEmail" type="email" placeholder="Írd be az e-mail címed" class="auth-input loginEmail">
+            </div>
+            <div class="input-container input-container-second">
+                <label for="loginPassword" class="auth-label loginPassword">Jelszó</label>
+                <input required id="loginPassword" type="password" placeholder="Írd be a jelszavad" class="auth-input loginPassword">
+            </div>
+            <button class="auth-modal-submit-btn">Belépés</button>
+        </form>
+        <a class="forgotModalLink" href="#"><p class="forgot-password">Elfelejtettem a jelszavam</p></a>
+        <p id="noUserLikeThis" class="invalid-auth invalid-login display-none">Ilyen e-mail cím nincs regisztrálva.</p>
+        <p id="wrongPassword" class="invalid-auth invalid-login display-none">Helytelen jelszó.</p>
+        <p id="unVerified" class="invalid-auth invalid-login display-none">Az e-mail címet még nem erősítetted meg.</p>
+        <p id="tooManyRequests" class="invalid-auth invalid-login display-none">Túl sok próbálkozás, várj egy percet.</p>
+    </section>
+    <span class="close-auth-modal">&#10006;</span>
+
+</div>
+
+    <!-- Forgot PW Modal --------------------------------------------------------------->
+    <div id="forgotModal" class="auth-modal modal-container auth-modal-forgot display-none">
+        <nav class="auth-modal-nav ">
+            <ul>
+                <li><button class="auth-button auth-button-login login-sign-in-button">Belépés</button></li>
+                <li><button class="auth-button auth-button-register login-register-button">Regisztráció</button></li>
+                <!-- <li><button class="auth-button login-close-button">&#10006</button></li> -->
+            </ul>
+        </nav>
+        <section class="auth-input-field">
+            <!-- Forgot Input ----------------------------------->
+            <h2 class="auth-modal-title forgotTitle">Elfelejtettem a jelszavam</h2>
+            <form id="forgotForm" action="" class="auth-form forgotForm">
+                <div class="input-container input-container-third">
+                    <label for="forgotEmail" class="auth-label forgotEmail">E-mail cím</label>
+                    <input required id="forgotEmail" type="email" placeholder="Írd be az e-mail címed" class="auth-input forgotEmail">
+                </div>
+
+                <button class="auth-modal-submit-btn">Jelszó visszaállítás</button>
+                <p class="forgot-password-info" >Ha elfelejtetted a jelszavad, akkor írd be a fenti mezőbe azt az e-mail címet, amivel az oldalra regisztráltál. Erre az e-mail címre küldünk egy levelet, aminek a segítségével új jelszót tudsz majd beállítani.</p>
+            </form>
+            <p id="noUserLikeThis" class="invalid-auth invalid-login display-none">Ilyen e-mail cím nincs regisztrálva.</p>
+            <p id="unVerified" class="invalid-auth invalid-login display-none">Az e-mail címet még nem erősítetted meg.</p>
+            <p id="tooManyRequests" class="invalid-auth invalid-login display-none">Túl sok próbálkozás, várj egy percet.</p>
+        </section>
+        <span class="close-auth-modal">&#10006;</span>
+
+    </div>
+
+<!-- Register Modal --------------------------------------------------------------->
+<div id="registerModal" class="auth-modal modal-container auth-modal-register display-none">
+    <nav class="auth-modal-nav ">
+        <ul>
+            <li><button class="auth-button auth-button-login register-sign-in-button">Belépés</button></li>
+            <li><button class="auth-button auth-button-register register-register-button">Regisztráció</button></li>
+        </ul>
+    </nav>
+    <section class="auth-input-field">
+        <!-- Register Input ----------------------------------->
+        <h2 class="auth-modal-title">Regisztráció</h2>
+        <form action="" id="registerForm" class="auth-form registerForm ">
+            <div class="input-container input-container-first">
+                <label for="registerEmail" class="auth-label registerEmail">E-mail cím</label>
+                <input required id="registerEmail" type="email" placeholder="Írd be az e-mail címed" class="auth-input registerEmail">
+            </div>
+
+            <div class="input-container input-container-second">
+                <label for="userName" class="auth-label userName">Felhasznlónév</label>
+                <input required id="registerUserName" minlength="3" maxlength="10" type="text" placeholder="Írd be a felhasználóneved (3-10 kar.)" class="auth-input userName">
+            </div>
+
+            <div class="input-container input-container-second">
+                <label for="registerPassword" class="auth-label registerPassword">Jelszó</label>
+                <input required id="registerPassword" type="password" placeholder="Írd be a jelszavad" class="auth-input registerPassword">
+            </div>
+            
+            <div class="input-container input-container-third">
+                <label for="registerPasswordAgain" class="auth-label registerPasswordAgain">Jelszó megerősítése</label>
+                <input required id="registerPasswordAgain" type="password" placeholder="Írd be ismét a jelszavad" class="auth-input registerPasswordAgain">
+            </div>
+            <button class="auth-modal-submit-btn">Regisztrálok</button>
+        </form>
+        <a class="forgotModalLink" href="#"><p class="forgot-password">Elfelejtettem a jelszavam</p></a>
+        <p id="emailInUse" class="invalid-auth email-register-invalid display-none">Ezzel az e-mail címmel már regisztráltak.</p>
+        <p id="passwordNotMatching" class="invalid-auth pw-not-matching display-none">A megadott jelszavak nem egyeznek meg.</p>
+        <p id="passwordIsWeak" class="invalid-auth weak-password display-none">A jelszónak legalább 6 karakterből kell állnia.</p>
+    </section>
+    <span class="close-auth-modal">&#10006;</span>
+    
+</div>
+
+
+<div id="modalOverlay" class="modal-overlay display-none"></div>
+
+
+<div id="dropdownOverlay" class="dropdown-overlay"></div>
+
+</body>
+</html>

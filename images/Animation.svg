@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Réteg_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#BBADFF;stroke-width:11;stroke-miterlimit:10;}
+	.st1{fill:#EAECEF;}
+	.st2{font-family:'Source Sans Pro';
+		 font-weight: 300;
+		}
+	.st3{font-size:205.0px;}
+</style>
+
+<defs>
+<!-- 	<style>
+		.st0 {
+			stroke-dasharray: 1400;
+			stroke-dashoffset: 0;
+			-webkit-animation: dash 2s linear forwards;
+			-o-animation:dash 2s linear forwards;
+			moz-animation: dash 2s linear forwards;
+			animation: dash 2s linear forwards;
+		}
+
+		@-webkit-keyframes dash {
+			from {
+				stroke-dashoffset: 1400;
+			}
+			to {
+				stroke-dashoffset: 0;
+			}
+		}
+	</style> -->
+</defs>
+
+<path class="st0" d="M424.25,384.435H75.546c-38.051,0-68.897-30.846-68.897-68.897V184.405c0-38.051,30.846-68.897,68.897-68.897
+	H424.25c38.051,0,68.897,30.846,68.897,68.897v131.133C493.147,353.589,462.301,384.435,424.25,384.435z"/>
+<text transform="matrix(1 0 0 1 81.0511 317.8828)" class="st1 st2 st3">Kari</text>
+</svg>

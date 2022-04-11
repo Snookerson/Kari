@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Information -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Gondot okoz az ajándékozás? Nálunk az egész család egy helyen nyomonkövetheti mindeni ajándékát! Nem kell többé gondolkozni, hogy ki milyen ajándékot kért.">
+        <meta name="author" content="Attila Pallagi">
+        <meta name="keywords" content="karácsony, ajándék, meglepetés, adatbázis, család, segítség, egyszerűség">
+        <title>Kari - Az ajándékozó adatbázis</title>
+    <!-- Linked resources -->
+        <link rel="stylesheet" href="index.css">
+        <link rel="icon" type="image/png" href="images/favicon.png">
+        <script defer src="app.js"></script>
+        <script defer type="text/javascript" src="auth.js"></script>
+
+    <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        
+
+</head>
+<body>
+    <div class="section section-one">
+        <!-- Header ------------------------------------------->
+        <header>
+            <!-- Icon -->
+            <a class="logo" href="index.html"><img src="images/Kari - logó-02.svg" title="Főoldal" alt="Weboldal ikonja"></a>
+            <!-- Dropdown -->
+            <div id="hamburgeButton" class="dropdown-hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+
+            <!-- Navigation -->
+            <!-- Navbar -->
+            <nav>
+            <nav>
+                <ul>
+                    <li><button class="nav-button logged-out authLoginButton sign-in-button display-none">Belépés</button></li>
+                    <li><button class="nav-button logged-out authRegisterButton regiszter-button display-none">Regisztráció</button></li>
+                    <li><a class="nav-button nav-button-simple logged-in display-none" href="faq.html"><button>Hasznos információk</button></a></li>
+                    <li><a class="nav-button nav-button-simple logged-in display-none" href="familypage.html"><button>Családi főmenü</button></a></li>
+                    <li><button class="nav-button nav-button-simple logged-in authLogoutButton logout-button display-none">Kijelentkezés</button></li>
+                    <li><a id="profileButton" class="nav-button logged-in display-none" href="profile.html"><button>Profilom</button></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Dropdown -->
+        <nav id="dropdownList" class="dropdown-container display-none">
+            <ul>
+                <li><a class="logged-out authLoginButton dropdown-nav-button" href="#">Belépés</a></li>
+                <li><a class="logged-out authRegisterButton dropdown-nav-button" href="#">Regisztráció</a></li>
+                <li><a class="logged-in dropdown-nav-button display-none" href="faq.html">Hasznos információk</a></li>
+                <li><a class="logged-in dropdown-nav-button display-none" href="familypage.html">Családi főmenü</a></li>
+                <li><a class="logged-in dropdown-nav-button display-none" href="profile.html">Profilom</a></li>
+                <li><a class="logged-in authLogoutButton dropdown-nav-button display-none" href="#">Kijelentkezés</a></li>
+            </ul>
+        </nav>
+
+        <!-- Banner -------------------------------------------->
+        <div class="banner" >
+        <!-- <h1 class="banner-title">Kari</h1> -->
+
+            <div class="animation-container">
+                <object class="animation-box">
+                    <embed src="images/Animation.svg" type="">
+                </object>
+
+            </div>
+
+            <p class="banner-text" >Karácsonyi ajándékozás egyszerűen!</p>
+            <a id="bannerMainButtonHref"href="#instructions"><button id="bannerMainButton" class="learn-more-button">Tudj meg többet!</button></a>
+        </div>
+    </div>
+    <!-- Instruction ------------------------------------------->
+    <div class="section section-two">
+        <section id="instructions" class="card">
+            <h2 class="instruction-title grid-box-1 grid-item">Mit tud ez a weboldal?</h2>
+            <p class="instruction-text grid-box-2 grid-item">Nem tudtok már mit venni egymásnak karácsonyra? Ha a családban ti is megbeszélitek, hogy ki mit kér, akkor jó helyen jársz,
+                megkönnyítjük az ezzel járó adminisztrációt.
+                Nálunk az egész család egy helyen nyomonkövetheti, hogy ki milyen ajándékot szeretne, így nem okoz több fejtörést az ajándékkeresés,
+                ráadásul senki nem kap olyan ajándékot, amit semmire nem fog használni.
+                </p>
+            <div class="instruction-box grid-box-3 grid-item">
+                <div class="instruction-round">
+                    <img src="images/add-icon.svg" alt="" class="instruction-icon">
+                </div>
+                <h3>Add hozzá a családtagokat</h3>
+            </div>
+
+            <div class="instruction-box grid-box-4 grid-item">
+                <div class="instruction-round">
+                    <img src="images/list-icon.svg" alt="" class="instruction-icon">
+                </div>
+                <h3>Írjatok listát, hogy ki mit szeretne</h3>
+            </div>
+
+            <div class="instruction-box grid-box-5 grid-item">
+                <div class="instruction-round">
+                    <img src="images/find-icon.svg" alt="" class="instruction-icon">
+                </div>
+                <h3>Válaszd ki más listájából, hogy mit veszel neki</h3>
+            </div>
+
+            <div class="instruction-box grid-box-6 grid-item">
+                <div class="instruction-round">
+                    <img src="images/puschase-icon.svg" alt="" class="instruction-icon">
+                </div>
+                <h3>Vedd meg az ajándékot időben</h3>
+            </div>
+            
+            <div class="grid-box-7 grid-item" >
+                <a href="faq.html"><button class="instruction-button">További hasznos információk</button></a>
+            </div>
+            
+        </section>
+
+    
+        <footer>
+            <p>All right reserved 	&copy;</p>
+        </footer>
+    </div>
+
+    <!-- Login Modal --------------------------------------------------------------->
+    <div id="loginModal" class="auth-modal modal-container auth-modal-login display-none">
+        <nav class="auth-modal-nav ">
+            <ul>
+                <li><button class="auth-button auth-button-login login-sign-in-button">Belépés</button></li>
+                <li><button class="auth-button auth-button-register login-register-button">Regisztráció</button></li>
+                <!-- <li><button class="auth-button login-close-button">&#10006</button></li> -->
+            </ul>
+        </nav>
+        <section class="auth-input-field">
+            <!-- Login Input ----------------------------------->
+            <h2 class="auth-modal-title loginTitle">Belépés</h2>
+            <form id="loginForm" action="" class="auth-form loginForm">
+                <div class="input-container input-container-first">
+                    <label for="loginEmail" class="auth-label loginEmail">E-mail cím</label>
+                    <input required id="loginEmail" type="email" placeholder="Írd be az e-mail címed" class="auth-input loginEmail">
+                </div>
+                <div class="input-container input-container-second">
+                    <label for="loginPassword" class="auth-label loginPassword">Jelszó</label>
+                    <input required id="loginPassword" type="password" placeholder="Írd be a jelszavad" class="auth-input loginPassword">
+                </div>
+                <button class="auth-modal-submit-btn">Belépés</button>
+            </form>
+            <a class="forgotModalLink" href="#"><p class="forgot-password">Elfelejtettem a jelszavam</p></a>
+            <p id="noUserLikeThis" class="invalid-auth invalid-login display-none">Ilyen e-mail cím nincs regisztrálva.</p>
+            <p id="wrongPassword" class="invalid-auth invalid-login display-none">Helytelen jelszó.</p>
+            <p id="unVerified" class="invalid-auth invalid-login display-none">Az e-mail címet még nem erősítetted meg.</p>
+            <p id="tooManyRequests" class="invalid-auth invalid-login display-none">Túl sok próbálkozás, várj egy percet.</p>
+        </section>
+        <span class="close-auth-modal">&#10006;</span>
+
+    </div>
+
+    <!-- Forgot PW Modal --------------------------------------------------------------->
+    <div id="forgotModal" class="auth-modal modal-container auth-modal-forgot display-none">
+        <nav class="auth-modal-nav ">
+            <ul>
+                <li><button class="auth-button auth-button-login login-sign-in-button">Belépés</button></li>
+                <li><button class="auth-button auth-button-register login-register-button">Regisztráció</button></li>
+                <!-- <li><button class="auth-button login-close-button">&#10006</button></li> -->
+            </ul>
+        </nav>
+        <section class="auth-input-field">
+            <!-- Forgot Input ----------------------------------->
+            <h2 class="auth-modal-title forgotTitle">Elfelejtettem a jelszavam</h2>
+            <form id="forgotForm" action="" class="auth-form forgotForm">
+                <div class="input-container input-container-third">
+                    <label for="forgotEmail" class="auth-label forgotEmail">E-mail cím</label>
+                    <input required id="forgotEmail" type="email" placeholder="Írd be az e-mail címed" class="auth-input forgotEmail">
+                </div>
+
+                <button class="auth-modal-submit-btn">Jelszó visszaállítás</button>
+                <p class="forgot-password-info" >Ha elfelejtetted a jelszavad, akkor írd be a fenti mezőbe azt az e-mail címet, amivel az oldalra regisztráltál. Erre az e-mail címre küldünk egy levelet, aminek a segítségével új jelszót tudsz majd beállítani.</p>
+            </form>
+            <p id="noUserLikeThis" class="invalid-auth invalid-login display-none">Ilyen e-mail cím nincs regisztrálva.</p>
+            <p id="unVerified" class="invalid-auth invalid-login display-none">Az e-mail címet még nem erősítetted meg.</p>
+            <p id="tooManyRequests" class="invalid-auth invalid-login display-none">Túl sok próbálkozás, várj egy percet.</p>
+        </section>
+        <span class="close-auth-modal">&#10006;</span>
+
+    </div>
+
+
+    <!-- Register Modal --------------------------------------------------------------->
+    <div id="registerModal" class="auth-modal modal-container auth-modal-register display-none">
+        <nav class="auth-modal-nav ">
+            <ul>
+                <li><button class="auth-button auth-button-login register-sign-in-button">Belépés</button></li>
+                <li><button class="auth-button auth-button-register register-register-button">Regisztráció</button></li>
+            </ul>
+        </nav>
+        <section class="auth-input-field">
+            <!-- Register Input ----------------------------------->
+            <h2 class="auth-modal-title">Regisztráció</h2>
+            <form action="" id="registerForm" class="auth-form registerForm ">
+                <div class="input-container input-container-first">
+                    <label for="registerEmail" class="auth-label registerEmail">E-mail cím</label>
+                    <input required id="registerEmail" type="email" placeholder="Írd be az e-mail címed" class="auth-input registerEmail">
+                </div>
+
+                <div class="input-container input-container-second">
+                    <label for="userName" class="auth-label userName">Felhasznlónév</label>
+                    <input required id="registerUserName" minlength="3" maxlength="10" type="text" placeholder="Írd be a felhasználóneved (3-10 kar.)" class="auth-input userName">
+                </div>
+
+                <div class="input-container input-container-second">
+                    <label for="registerPassword" class="auth-label registerPassword">Jelszó</label>
+                    <input required id="registerPassword" type="password" placeholder="Írd be a jelszavad" class="auth-input registerPassword">
+                </div>
+                
+                <div class="input-container input-container-third">
+                    <label for="registerPasswordAgain" class="auth-label registerPasswordAgain">Jelszó megerősítése</label>
+                    <input required id="registerPasswordAgain" type="password" placeholder="Írd be ismét a jelszavad" class="auth-input registerPasswordAgain">
+                </div>
+                <button class="auth-modal-submit-btn">Regisztrálok</button>
+            </form>
+            <a href="#"class="forgotModalLink" ><p class="forgot-password">Elfelejtettem a jelszavam</p></a>
+            <p id="emailInUse" class="invalid-auth email-register-invalid display-none">Ezzel az e-mail címmel már regisztráltak.</p>
+            <p id="passwordNotMatching" class="invalid-auth pw-not-matching display-none">A megadott jelszavak nem egyeznek meg.</p>
+            <p id="passwordIsWeak" class="invalid-auth weak-password display-none">A jelszónak legalább 6 karakterből kell állnia.</p>
+        </section>
+        <span class="close-auth-modal">&#10006;</span>
+        
+    </div>
+
+
+    <div id="modalOverlay" class="modal-overlay display-none"></div>
+
+
+    <div id="dropdownOverlay" class="dropdown-overlay"></div>
+
+</body>
+</html>
